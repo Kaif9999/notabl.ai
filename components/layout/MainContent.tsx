@@ -121,7 +121,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
           {getBreadcrumbPath().map((item, index, array) => (
             <React.Fragment key={item.id}>
               <Link
-                href={`/folder/${item.id}`}
+                href={`/dashboard/folder/${item.id}`}
                 className={`hover:text-ruby-primary transition-colors text-black ${
                   index === array.length - 1 ? "font-medium" : ""
                 }`}
