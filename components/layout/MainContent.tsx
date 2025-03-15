@@ -32,8 +32,8 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
   const [searchQuery, setSearchQuery] = useState("");
   const [isProcessingNote, setIsProcessingNote] = useState(false);
   
-  const currentFolderId = folderId || (pathname.startsWith("/folder/")
-    ? pathname.split("/folder/")[1]
+  const currentFolderId = folderId || (pathname.startsWith("/dashboard/folder/")
+    ? pathname.split("/dashboard/folder/")[1]
     : "folder-1");
   
   const currentFolder = folders.find((folder) => folder.id === currentFolderId);
@@ -67,7 +67,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
       return;
     }
     deleteFolder(currentFolderId);
-    router.push("/folder/folder-1");
+    router.push("/dashboard/folder/folder-1");
     toast.success("Folder deleted successfully");
   };
   
@@ -89,7 +89,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
     toast.success("Note created successfully");
     
     // Navigate to the newly created note using the correct route
-    router.push(`/notes/${newNote.id}`);
+    router.push(`/dashboard/notes/${newNote.id}`);
     setIsProcessingNote(false);
   };
   
@@ -121,7 +121,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
           {getBreadcrumbPath().map((item, index, array) => (
             <React.Fragment key={item.id}>
               <Link
-                href={`/folder/${item.id}`}
+                href={`/dashboard/folder/${item.id}`}
                 className={`hover:text-ruby-primary transition-colors text-black ${
                   index === array.length - 1 ? "font-medium" : ""
                 }`}
@@ -179,7 +179,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             <Button
               variant="outline"
-              className="bg-purple-900 hover:bg-purple-950 text-white border-none h-12 rounded-lg"
+              className="bg-purple-900 hover:bg-purple-950 text-white hover:text-white border-none h-12 rounded-lg"
               onClick={handleRecordAudio}
             >
               <Mic className="mr-2 h-5 w-5" />
@@ -188,7 +188,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
             
             <Button
               variant="outline"
-              className="bg-black hover:bg-black/90 text-white border-none h-12 rounded-lg"
+              className="bg-black hover:bg-black/90 hover:text-white text-white border-none h-12 rounded-lg"
               onClick={() => handleUpload("audio")}
             >
               <Upload className="mr-2 h-5 w-5" />
@@ -197,7 +197,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
             
             <Button
               variant="outline"
-              className="bg-black hover:bg-black/90 text-white border-none h-12 rounded-lg"
+              className="bg-black hover:bg-black/90 hover:text-white text-white border-none h-12 rounded-lg"
               onClick={() => handleUpload("pdf")}
             >
               <FileText className="mr-2 h-5 w-5" />
@@ -206,7 +206,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
             
             <Button
               variant="outline"
-              className="bg-black hover:bg-black/90 text-white border-none h-12 rounded-lg"
+              className="bg-black hover:bg-black/90 hover:text-white text-white border-none h-12 rounded-lg"
               onClick={() => handleUpload("youtube")}
             >
               <Youtube className="mr-2 h-5 w-5" />
@@ -240,7 +240,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
             <div className="text-center py-12 rounded-xl bg-white border border-border">
               {searchQuery ? (
                 <div className="space-y-2">
-                  <p className="text-muted-foreground">No notes found matching "{searchQuery}"</p>
+                  <p className="text-muted-foreground">No notes found matching &quot;{searchQuery}&quot;</p>
                   <Button
                     variant="ghost"
                     className="text-ruby-primary"

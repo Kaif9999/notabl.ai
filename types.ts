@@ -1,5 +1,5 @@
 export type NoteView = "note" | "summary" | "flashcards";
-export type ProcessingStatus = "idle" | "uploading" | "transcribing" | "generating" | "completed" | "error";
+export type ProcessingStatus = "idle"|"recording" | "uploading" | "transcribing" | "generating" | "completed" | "error";
 
 export interface Note {
   id: string;

@@ -1,14 +1,10 @@
-import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import "./globals.css";
-import ClientProviders from "@/components/ClientProviders";
-import { ThemeProvider } from "@/components/ThemeProvider";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Note App",
-  description: "A modern note-taking application",
+  title: "Notabl.ai - Transform your notes",
+  description: "The intelligent note-taking app that helps you capture, organize, and retrieve your thoughts effortlessly.",
 };
 
 export default function RootLayout({
@@ -17,11 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ClientProviders>{children}</ClientProviders>
-        </ThemeProvider>
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
       </body>
     </html>
   );

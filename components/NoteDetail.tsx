@@ -30,7 +30,7 @@ const NoteDetail = ({ noteId: propNoteId, onOpenSettings, onOpenUpgrade }: NoteD
   
   useEffect(() => {
     if (!noteId || !note) {
-      router.push("/");
+      router.push("/dashboard");
     }
   }, [noteId, note, router]);
   
@@ -43,14 +43,14 @@ const NoteDetail = ({ noteId: propNoteId, onOpenSettings, onOpenUpgrade }: NoteD
   
   if (!note) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="p-8 text-center">
           <h1 className="text-2xl font-bold mb-2">Note not found</h1>
           <p className="text-muted-foreground mb-4">
-            The note you're looking for doesn't exist or has been deleted.
+            The note you&apos;re looking for doesn&apos;t exist or has been deleted.
           </p>
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/dashboard")}
             className="text-ruby-primary hover:underline"
           >
             Return to home
@@ -63,7 +63,7 @@ const NoteDetail = ({ noteId: propNoteId, onOpenSettings, onOpenUpgrade }: NoteD
   const handleDeleteNote = (id: string) => {
     deleteNote(id);
     toast.success("Note deleted successfully");
-    router.push("/");
+    router.push("/dashboard");
   };
   
   const handleSaveNote = (updatedNote: typeof note) => {

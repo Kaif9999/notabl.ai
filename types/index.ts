@@ -1,4 +1,3 @@
-
 export type Folder = {
     id: string;
     name: string;
@@ -19,14 +18,7 @@ export type Folder = {
   
   export type NoteView = "note" | "quiz" | "flashcards" | "transcript" | "mindmap";
   
-  export type ProcessingStatus = 
-    | "idle" 
-    | "recording" 
-    | "uploading" 
-    | "transcribing" 
-    | "generating" 
-    | "completed" 
-    | "error";
+  export type ProcessingStatus = "idle" | "recording" | "uploading" | "transcribing" | "generating" | "completed" | "error";
   
   export type ProcessingStep = {
     id: number;

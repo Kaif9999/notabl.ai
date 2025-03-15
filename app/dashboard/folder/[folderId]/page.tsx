@@ -1,7 +1,5 @@
 "use client";
 
-import { use } from "react";
-import { useState } from "react";
 import { MainContent } from "@/components/layout/MainContent";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -9,18 +7,15 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SettingsModal } from "@/components/modals/SettingsModal";
 import { UpgradeModal } from "@/components/modals/UpgradeModal";
+import { useState } from "react";
+import { use } from "react";
 
-interface PageParams {
-  folderId: string;
-}
-
-export default function FolderPage({ params }: { params: Promise<PageParams> }) {
-  const { folderId } = use(params);
+function FolderPageClient({ folderId }: { folderId: string }) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [upgradeOpen, setUpgradeOpen] = useState(false);
   const isMobile = useIsMobile();
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
-  
+
   return (
     <div className="flex min-h-screen w-full relative">
       {/* Desktop sidebar */}
@@ -70,4 +65,9 @@ export default function FolderPage({ params }: { params: Promise<PageParams> }) 
       <UpgradeModal isOpen={upgradeOpen} onClose={() => setUpgradeOpen(false)} />
     </div>
   );
+}
+
+export default function FolderPage({ params }: { params: Promise<{ folderId: string }> }) {
+  const resolvedParams = use(params);
+  return <FolderPageClient folderId={resolvedParams.folderId} />;
 }
