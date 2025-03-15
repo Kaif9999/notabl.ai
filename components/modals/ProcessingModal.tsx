@@ -1,35 +1,46 @@
 import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Check, Clock, AlertCircle, Eye } from "lucide-react";
+import { Check, Clock, AlertCircle, Eye, Loader2, Circle } from "lucide-react";
 import { useNoteContext } from "@/context/NoteContext";
+import { ProcessingStatus } from "@/types";
 
 interface ProcessingModalProps {
   isOpen: boolean;
   onClose: () => void;
   onViewNote: () => void;
   sourceType: "audio" | "pdf" | "youtube";
+  processingStatus: ProcessingStatus;
 }
 
-export function ProcessingModal({ isOpen, onClose, onViewNote, sourceType }: ProcessingModalProps) {
-  const { processingStatus } = useNoteContext();
+export function ProcessingModal({ isOpen, onClose, onViewNote, sourceType, processingStatus }: ProcessingModalProps) {
+  const { processingStatus: contextProcessingStatus } = useNoteContext();
   
   const getStepStatus = (step: number) => {
     if (processingStatus === "idle") return "pending";
     
-    if (processingStatus === "recording" && step > 1) return "pending";
-    if (processingStatus === "uploading" && step > 2) return "pending";
-    if (processingStatus === "transcribing" && step > 3) return "pending";
-    if (processingStatus === "generating" && step > 4) return "pending";
+    // Map steps to their corresponding statuses
+    const stepMap = {
+      1: "uploading",
+      2: "transcribing",
+      3: "generating"
+    } as const;
     
-    if (processingStatus === "recording" && step === 1) return "progress";
-    if (processingStatus === "uploading" && step === 2) return "progress";
-    if (processingStatus === "transcribing" && step === 3) return "progress";
-    if (processingStatus === "generating" && step === 4) return "progress";
+    const currentStepIndex = Object.values(stepMap).indexOf(processingStatus as any);
     
-    if (processingStatus === "completed" && step === 5) return "completed";
+    if (currentStepIndex === -1) {
+      // Handle completed or error states
+      if (processingStatus === "completed") return "completed";
+      if (processingStatus === "error") return "error";
+      return "pending";
+    }
     
-    return "completed";
+    // If we're at a later step than the current one, it's completed
+    if (step - 1 < currentStepIndex) return "completed";
+    // If we're at the current step, it's in progress
+    if (step - 1 === currentStepIndex) return "in-progress";
+    // If we're at an earlier step, it's pending
+    return "pending";
   };
   
   const getSourceLabel = () => {
@@ -92,7 +103,7 @@ export function ProcessingModal({ isOpen, onClose, onViewNote, sourceType }: Pro
                     <div 
                       className={`absolute left-3 top-6 bottom-0 w-0.5 ${
                         status === "completed" ? "bg-green-500" : 
-                        status === "progress" ? "bg-feynman-red" : "bg-gray-200"
+                        status === "in-progress" ? "bg-feynman-red" : "bg-gray-200"
                       }`} 
                     />
                   )}
@@ -100,14 +111,14 @@ export function ProcessingModal({ isOpen, onClose, onViewNote, sourceType }: Pro
                   <div 
                     className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 z-10 ${
                       status === "completed" ? "border-green-500 text-green-500" : 
-                      status === "progress" ? "border-feynman-red text-feynman-red animate-pulse" : 
+                      status === "in-progress" ? "border-feynman-red text-feynman-red animate-pulse" : 
                       "border-gray-300 text-gray-300"
                     }`}
                   >
                     {status === "completed" ? (
                       <Check size={14} />
-                    ) : status === "progress" ? (
-                      <Clock size={14} />
+                    ) : status === "in-progress" ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
                       <span className="text-xs">{step.id}</span>
                     )}
@@ -119,7 +130,7 @@ export function ProcessingModal({ isOpen, onClose, onViewNote, sourceType }: Pro
                       {status === "completed" && (
                         <span className="text-green-500 text-xs font-medium">Completed</span>
                       )}
-                      {status === "progress" && (
+                      {status === "in-progress" && (
                         <span className="text-feynman-red text-xs font-medium flex items-center gap-1">
                           <span>Progress</span>
                           {step.time && <span>{step.time}</span>}

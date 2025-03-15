@@ -94,7 +94,7 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="flex items-center gap-2 border-2 text-white hover:bg-purple-400 rounded-xl px-8 py-6 text-lg transition-all"
+                    className="flex items-center gap-2 border-2 text-white hover:bg-purple-400 rounded-xl px-8 py-6 text-lg transition-all bg-black"
                   >
                     See how it works <ArrowRight size={20} />
                   </Button>

@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 
 interface FlowingWaveformProps {
   isRecording: boolean;
+  onToggleRecording?: () => void;
 }
 
-export function FlowingWaveform({ isRecording }: FlowingWaveformProps) {
+export function FlowingWaveform({ isRecording, onToggleRecording }: FlowingWaveformProps) {
   const redBarsRef = useRef<HTMLDivElement>(null);
   
   // Bar definitions with more dynamic heights for better visualization
