@@ -40,16 +40,16 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 py-4 px-6 md:px-12 flex items-center justify-between bg-white/80 backdrop-blur-md border-b border-gray-200/20 shadow-sm z-50">
+      <nav className="fixed top-0 left-0 right-0 py-3 md:py-4 px-4 md:px-12 flex items-center justify-between bg-white/80 backdrop-blur-md border-b border-gray-200/20 shadow-sm z-50">
         <div className="flex items-center">
-          <div className="h-10 w-10 rounded-lg border-2 bg-black border-black flex items-center justify-center">
-            <Mic className="h-6 w-6 text-purple-700" />
+          <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg border-2 bg-black border-black flex items-center justify-center">
+            <Mic className="h-4 w-4 md:h-6 md:w-6 text-purple-700" />
           </div>
-          <span className="ml-2 text-2xl font-bold text-purple-600">
+          <span className="ml-2 text-xl md:text-2xl font-bold text-purple-600">
             Notabl.ai
           </span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           <button
             onClick={handleLogin}
             className="text-sm font-medium text-black hover:text-purple-700 transition-colors"
@@ -58,7 +58,7 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
           </button>
           <Button
             onClick={handleSignup}
-            className="bg-black hover:bg-black/90 text-white"
+            className="bg-black hover:bg-black/90 text-white text-sm md:text-base px-3 md:px-4"
           >
             Get Started
           </Button>
@@ -66,43 +66,43 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
       </nav>
 
       {/* Add padding to account for fixed navbar */}
-      <div className="pt-16 md:pt-10">
+      <div className="pt-14 md:pt-16">
         {/* Hero Section */}
-        <section className="py-4 md:py-24 px-2 md:px-12 bg-gradient-to-br from-purple-50 via-white to-purple-50">
+        <section className="py-8 md:py-24 px-4 md:px-12 bg-gradient-to-br from-purple-50 via-white to-purple-50">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-              <div className="md:w-1/2 space-y-8">
-                <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight">
+              <div className="md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-black leading-tight">
                   Transform your notes with{" "}
                   <span className="text-purple-700 relative">
                     Notabl
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-purple-200 rounded-full"></div>
                   </span>
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
                   The intelligent note-taking app that helps you capture,
                   organize, and retrieve your thoughts effortlessly.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
                   <Button
                     onClick={handleSignup}
                     size="lg"
-                    className="bg-purple-700 hover:bg-black/90 text-white text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                    className="bg-purple-700 hover:bg-black/90 text-white text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
                   >
                     Get Started For Free
                   </Button>
                   <Button
                     variant="outline"
                     size="lg"
-                    className="flex items-center gap-2 border-2 text-white hover:bg-purple-400 rounded-xl px-8 py-6 text-lg transition-all bg-black"
+                    className="flex items-center justify-center gap-2 border-2 text-white hover:bg-purple-400 rounded-xl px-6 md:px-8 py-5 md:py-6 text-base md:text-lg transition-all bg-black w-full sm:w-auto"
                   >
                     See how it works <ArrowRight size={20} />
                   </Button>
                 </div>
               </div>
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 w-full px-4 md:px-0">
                 <div className="relative">
-                  <div className="w-full h-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-black/10 backdrop-blur-xl">
+                  <div className="w-full h-[300px] md:h-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-black/10 backdrop-blur-xl">
                     <div className="h-12 bg-gray-50/80 border-b border-black/10 flex items-center px-4 backdrop-blur-xl">
                       <div className="flex space-x-2">
                         <div className="w-3 h-3 rounded-full bg-black"></div>
@@ -130,7 +130,7 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="absolute -z-10 -bottom-6 -right-6 w-full h-[400px] bg-gradient-to-br from-purple-200 to-purple-100 rounded-2xl"></div>
+                  <div className="absolute -z-10 -bottom-6 -right-6 w-full h-[300px] md:h-[400px] bg-gradient-to-br from-purple-200 to-purple-100 rounded-2xl"></div>
                 </div>
               </div>
             </div>
@@ -138,20 +138,20 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
         </section>
 
         {/* Why Choose Notable Section */}
-        <section className="py-24 px-6 md:px-12 bg-black text-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 md:px-12 bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(128,90,213,0.25),transparent_50%)]"></div>
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <div className="text-center mb-12 md:mb-20">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
                 Why Choose Notable?
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-4 md:px-0">
                 Experience a revolutionary approach to note-taking that adapts
                 to your needs
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
               <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-purple-500/50 transition-all">
                 <div className="w-14 h-14 rounded-xl bg-purple-600/20 flex items-center justify-center mb-6">
                   <Brain className="text-purple-400" size={28} />
@@ -192,11 +192,11 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
               </div>
             </div>
 
-            <div className="mt-16 text-center">
+            <div className="mt-12 md:mt-16 text-center">
               <Button
                 onClick={handleSignup}
                 size="lg"
-                className="bg-white hover:bg-gray-100 text-black text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                className="bg-white hover:bg-gray-100 text-black text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
               >
                 Start Your Journey
               </Button>
@@ -205,19 +205,19 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 px-6 md:px-12 bg-white">
+        <section className="py-12 md:py-16 px-4 md:px-12 bg-white">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4 text-black">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-black">
                 Versatile Note Capturing
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4 md:px-0">
                 Notable gives you multiple ways to capture your thoughts and
                 ideas.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 px-4 md:px-0">
               <div className="p-6 bg-white border-2 border-black rounded-xl hover:bg-purple-50 transition-colors">
                 <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
                   <Mic className="text-black" />
@@ -268,50 +268,6 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
             </div>
           </div>
         </section>
-
-        {/* Benefits Section */}
-        {/* <section className="py-16 px-6 md:px-12 bg-purple-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4 text-black">Why Choose Notabl</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Experience the benefits of a modern note-taking app designed for productivity.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-6 bg-white border-2 border-black rounded-xl">
-                <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
-                  <Clock className="text-black" size={28} />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-black">Save Time</h3>
-                <p className="text-gray-600">
-                  Quickly capture and organize your thoughts without losing focus on what matters.
-                </p>
-              </div>
-
-              <div className="text-center p-6 bg-white border-2 border-black rounded-xl">
-                <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
-                  <Brain className="text-black" size={28} />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-black">AI-Powered</h3>
-                <p className="text-gray-600">
-                  Intelligent summaries and organization that help you extract key insights.
-                </p>
-              </div>
-
-              <div className="text-center p-6 bg-white border-2 border-black rounded-xl">
-                <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
-                  <Star className="text-black" size={28} />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-black">Beautiful Experience</h3>
-                <p className="text-gray-600">
-                  A clean, intuitive interface that makes note-taking a pleasure, not a chore.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section> */}
 
         {/* CTA Section */}
         <section className="py-16 px-6 md:px-12 bg-black text-white">
