@@ -1,11 +1,11 @@
+import React from "react";
 import { useEffect, useRef, useState } from 'react';
 
 interface FlowingWaveformProps {
   isRecording: boolean;
-  onToggleRecording: () => void;
 }
 
-const FlowingWaveform = ({ isRecording, onToggleRecording }: FlowingWaveformProps) => {
+export function FlowingWaveform({ isRecording }: FlowingWaveformProps) {
   const redBarsRef = useRef<HTMLDivElement>(null);
   
   // Bar definitions with more dynamic heights for better visualization
@@ -149,6 +149,4 @@ const FlowingWaveform = ({ isRecording, onToggleRecording }: FlowingWaveformProp
       `}</style>
     </div>
   );
-};
-
-export default FlowingWaveform; 
+} 

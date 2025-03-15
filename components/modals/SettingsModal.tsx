@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { LogOut, Moon, Sun, Globe, Shield, Crown } from "lucide-react";
 import { useNoteContext } from "@/context/NoteContext";
+import Image from 'next/image';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -30,10 +31,12 @@ export function SettingsModal({ isOpen, onClose, onOpenUpgradeModal, onLogout }:
         <div className="space-y-6">
           <div className="flex items-center mb-6">
             <div className="w-10 h-10 rounded-full bg-feynman-gray flex items-center justify-center mr-3">
-              <img
+              <Image
                 src={userProfile.avatar}
                 alt={userProfile.name}
-                className="w-full h-full rounded-full object-cover"
+                width={80}
+                height={80}
+                className="rounded-full object-cover"
               />
             </div>
             <h2 className="text-xl font-bold text-black">My profile</h2>

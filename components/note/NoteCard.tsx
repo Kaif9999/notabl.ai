@@ -32,7 +32,7 @@ export function NoteCard({ note, onDelete }: NoteCardProps) {
 
   return (
     <div className="group relative bg-white border border-gray-200 rounded-lg p-4">
-      <Link href={`/notes/${note.id}`} className="block">
+      <Link href={`/dashboard/notes/${note.id}`} className="block">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
             {getSourceIcon()}
@@ -64,7 +64,10 @@ export function NoteCard({ note, onDelete }: NoteCardProps) {
                   className="text-red-600"
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (onDelete) onDelete(note.id);
+                    if (onDelete) {
+                      onDelete(note.id);
+                      router.push('/dashboard');
+                    }
                   }}
                 >
                   <Trash className="mr-2 h-4 w-4" />

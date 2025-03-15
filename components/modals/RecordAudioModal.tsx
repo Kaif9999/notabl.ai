@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { X, Square, Mic, Loader2, Check, Circle, Pause, Play } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { FlowingWaveform } from "@/components/FlowingWaveform";
+import { X, Square, Mic, Loader2, Check, Circle, Pause, Play } from "lucide-react";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { formatTime } from "@/utils/noteUtils";
 import { ProcessingStatus } from "@/types";
 import { useNoteContext } from "@/context/NoteContext";
 import { toast } from "sonner";
-import FlowingWaveform from "@/components/FlowingWaveform";
 
 interface RecordAudioModalProps {
   isOpen: boolean;

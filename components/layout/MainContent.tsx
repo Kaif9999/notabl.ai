@@ -32,8 +32,8 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
   const [searchQuery, setSearchQuery] = useState("");
   const [isProcessingNote, setIsProcessingNote] = useState(false);
   
-  const currentFolderId = folderId || (pathname.startsWith("/folder/")
-    ? pathname.split("/folder/")[1]
+  const currentFolderId = folderId || (pathname.startsWith("/dashboard/folder/")
+    ? pathname.split("/dashboard/folder/")[1]
     : "folder-1");
   
   const currentFolder = folders.find((folder) => folder.id === currentFolderId);
@@ -67,7 +67,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
       return;
     }
     deleteFolder(currentFolderId);
-    router.push("/folder/folder-1");
+    router.push("/dashboard/folder/folder-1");
     toast.success("Folder deleted successfully");
   };
   
@@ -89,7 +89,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
     toast.success("Note created successfully");
     
     // Navigate to the newly created note using the correct route
-    router.push(`/notes/${newNote.id}`);
+    router.push(`/dashboard/notes/${newNote.id}`);
     setIsProcessingNote(false);
   };
   
@@ -240,7 +240,7 @@ export function MainContent({ title, folderId = "folder-1" }: MainContentProps) 
             <div className="text-center py-12 rounded-xl bg-white border border-border">
               {searchQuery ? (
                 <div className="space-y-2">
-                  <p className="text-muted-foreground">No notes found matching "{searchQuery}"</p>
+                  <p className="text-muted-foreground">No notes found matching &quot;{searchQuery}&quot;</p>
                   <Button
                     variant="ghost"
                     className="text-ruby-primary"
