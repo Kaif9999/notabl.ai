@@ -1,5 +1,6 @@
 import { Mic } from 'lucide-react'
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -86,28 +87,26 @@ const Footer = () => {
               <h3 className="font-semibold mb-4 text-black">Legal</h3>
               <ul className="space-y-2">
                 <li>
-                  <a
+                  <Link
                     href="/privacy"
                     className="text-gray-600 hover:text-purple-700 transition-colors"
                   >
                     Privacy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/terms"
                     className="text-gray-600 hover:text-purple-700 transition-colors"
                   >
                     Terms
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-purple-700 transition-colors"
-                  >
+                  <Link href='#' className='text-gray-600 hover:text-purple-700 transition-colors'>
+                  
                     Security
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
