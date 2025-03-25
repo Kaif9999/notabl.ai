@@ -35,7 +35,7 @@ export default function SignupPage() {
           <p className="text-center text-sm text-gray-600">
             Already have an account?{' '}
             <button
-              onClick={() => router.push('/login')}
+              onClick={() => router.push('/dashboard')}
               className="font-medium text-purple-600 hover:text-purple-500"
             >
               Log in

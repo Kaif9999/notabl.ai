@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Mic,
   FileText,
@@ -12,59 +12,16 @@ import {
   Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
-interface LandingPageProps {
-  onLogin?: () => void;
-  onSignup?: () => void;
-}
 
-export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
-  const router = useRouter();
-
-  const handleLogin = () => {
-    if (onLogin) {
-      onLogin();
-    } else {
-      router.push("/dashboard");
-    }
-  };
-
-  const handleSignup = () => {
-    if (onSignup) {
-      onSignup();
-    } else {
-      router.push("/dashboard");
-    }
-  };
+export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 py-3 md:py-4 px-4 md:px-12 flex items-center justify-between bg-white/80 backdrop-blur-md border-b border-gray-200/20 shadow-sm z-50">
-        <div className="flex items-center">
-          <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg border-2 bg-black border-black flex items-center justify-center">
-            <Mic className="h-4 w-4 md:h-6 md:w-6 text-purple-700" />
-          </div>
-          <span className="ml-2 text-xl md:text-2xl font-bold text-purple-600">
-            Notabl.ai
-          </span>
-        </div>
-        <div className="flex items-center gap-2 md:gap-4">
-          <button
-            onClick={handleLogin}
-            className="text-sm font-medium text-black hover:text-purple-700 transition-colors"
-          >
-            Login
-          </button>
-          <Button
-            onClick={handleSignup}
-            className="bg-black hover:bg-black/90 text-white text-sm md:text-base px-3 md:px-4"
-          >
-            Get Started
-          </Button>
-        </div>
-      </nav>
-
+      <Navbar />
       {/* Add padding to account for fixed navbar */}
       <div className="pt-14 md:pt-16">
         {/* Hero Section */}
@@ -84,13 +41,14 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
                   organize, and retrieve your thoughts effortlessly.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
+                  <Link href= "/pricing">
                   <Button
-                    onClick={handleSignup}
                     size="lg"
                     className="bg-purple-700 hover:bg-black/90 text-white text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
-                  >
+                    >
                     Get Started For Free
                   </Button>
+                    </Link>
                   <Button
                     variant="outline"
                     size="lg"
@@ -194,7 +152,7 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
 
             <div className="mt-12 md:mt-16 text-center">
               <Button
-                onClick={handleSignup}
+                
                 size="lg"
                 className="bg-white hover:bg-gray-100 text-black text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
               >
@@ -279,8 +237,9 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
               Join thousands of users who are already experiencing the future of
               note-taking.
             </p>
+            
             <Button
-              onClick={handleSignup}
+              
               size="lg"
               className="bg-purple-800 hover:bg-gray-100 text-black"
             >
@@ -290,144 +249,7 @@ export default function LandingPage({ onLogin, onSignup }: LandingPageProps) {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 px-6 md:px-12 bg-white border-t-2 border-black">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between">
-              <div className="mb-8 md:mb-0">
-                <div className="flex items-center">
-                  <div className="h-10 w-10 rounded-lg border-2 bg-black border-black flex items-center justify-center">
-                    <Mic className="h-6 w-6 text-purple-700" />
-                  </div>
-                  <span className="ml-2 text-2xl font-bold text-purple-600">
-                    Notabl.ai
-                  </span>
-                </div>
-                <p className="mt-4 text-gray-600 max-w-xs">
-                  Transform your note-taking experience with our intelligent
-                  platform.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-                <div>
-                  <h3 className="font-semibold mb-4 text-black">Product</h3>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Features
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Pricing
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        FAQ
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-4 text-black">Company</h3>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Careers
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-4 text-black">Legal</h3>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Privacy
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Terms
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-600 hover:text-purple-700 transition-colors"
-                      >
-                        Security
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-gray-200 text-gray-600 text-sm">
-              <div className="flex flex-col md:flex-row justify-between items-center">
-                <p>© 2025 Notabl. All rights reserved.</p>
-                <div className="mt-4 md:mt-0 flex space-x-6">
-                  <a
-                    href="#"
-                    className="hover:text-purple-700 transition-colors"
-                  >
-                    Twitter
-                  </a>
-                  <a
-                    href="#"
-                    className="hover:text-purple-700 transition-colors"
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    href="#"
-                    className="hover:text-purple-700 transition-colors"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </div>
   );
