@@ -1,0 +1,148 @@
+.container {
+  box-sizing: border-box;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #FFFFFF;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    padding: 2rem;
+    gap: 0;
+  }
+}
+
+.leftPanel {
+  width: 100%;
+  height: auto;
+  order: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .leftPanel {
+    width: 50%;
+    height: 100%;
+    order: 1;
+    background: radial-gradient(209.41% 121.43% at 0% 0%, #FFFFFF 0%, #FEEAD7 100%);
+    /* border: 2px solid rgba(255, 255, 255, 0.6); */
+    border-radius: 12px 0px 0px 12px;
+    position: relative;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1.5;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .imageContainer {
+    position: absolute;
+    width: 575px;
+    height: 383px;
+    left: calc(50% - 575px/2);
+    top: calc(50% - 383px/2);
+    max-width: none;
+  }
+}
+
+.previewImage {
+  border: 1px solid rgba(241, 131, 39, 0.14);
+  filter: drop-shadow(0px 6px 24px rgba(0, 0, 0, 0.15));
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rightPanel {
+  width: 100%;
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .rightPanel {
+    width: 50%;
+    height: 100%;
+    order: 2;
+    background: #FFFFFF;
+    border-radius: 0px 12px 12px 0px;
+    padding-top: 0;
+  }
+}
+
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 2rem;
+  width: 100%;
+  max-width: 362px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    transform: scale(1.1);
+  }
+}
+
+.googleButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.googleButton:hover {
+  background: #F8F9FA;
+  border-color: #D0D0D0;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.googleButton:active {
+  background: #F0F0F0;
+  transform: translateY(1px);
+}
+
+.googleButton span {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3C4043;
+  letter-spacing: 0.25px;
+} 

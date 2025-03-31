@@ -1,15 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: '/login',
-        destination: '/',
-        permanent: true,
-      },
-    ]
+  images: {
+    domains: ['lh3.googleusercontent.com'], // Add Google's domain for profile pictures
   },
+  // Your other Next.js config options...
 }
 
 module.exports = nextConfig 

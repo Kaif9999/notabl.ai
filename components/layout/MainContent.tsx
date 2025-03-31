@@ -57,8 +57,8 @@ export function MainContent({
 
   const currentFolderId =
     folderId ||
-    (pathname.startsWith("/dashboard/folder/")
-      ? pathname.split("/dashboard/folder/")[1]
+    (pathname?.startsWith("/dashboard/folder/")
+      ? pathname?.split("/dashboard/folder/")[1]
       : "folder-1");
 
   const currentFolder = folders.find((folder) => folder.id === currentFolderId);

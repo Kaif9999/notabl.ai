@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin, onSignup }) => {
         </Link>
       </div>
       <div className="flex items-center gap-2 md:gap-4">
-        <Link href="/dashboard" passHref>
+        <Link href="/signin" passHref>
           <span className="text-sm font-medium text-black hover:text-purple-700 transition-colors cursor-pointer">
             Login
           </span>

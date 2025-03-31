@@ -237,11 +237,14 @@ export function Sidebar({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Image
-                src={userProfile.avatar}
-                alt={userProfile.name}
+                src={userProfile.avatar || '/default-avatar.png'}
+                alt={userProfile.name || 'User'}
                 width={32}
                 height={32}
                 className="rounded-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = '/default-avatar.png';
+                }}
               />
               <div>
                 <div className="text-sm font-medium">{userProfile.name}</div>
