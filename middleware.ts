@@ -1,21 +1,37 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { getToken } from 'next-auth/jwt'
 
-export function middleware(request: NextRequest) {
-  // For now, we'll just allow all requests through
-  // Later you can add authentication logic here
-  return NextResponse.next();
+export async function middleware(request: NextRequest) {
+  // Skip auth check for auth-related routes
+  if (
+    request.nextUrl.pathname.startsWith('/api/auth') ||
+    request.nextUrl.pathname.startsWith('/_next') ||
+    request.nextUrl.pathname.startsWith('/favicon.ico')
+  ) {
+    return NextResponse.next()
+  }
+  
+  const token = await getToken({
+    req: request,
+    secret: process.env.AUTH_SECRET,
+  })
+  
+  const isAuthenticated = !!token
+  const isOnDashboard = request.nextUrl.pathname.startsWith('/dashboard')
+  
+  // Redirect unauthenticated users from dashboard to signin
+  if (isOnDashboard && !isAuthenticated) {
+    return NextResponse.redirect(new URL('/signin', request.url))
+  }
+  
+  // Allow authenticated users to access dashboard
+  return NextResponse.next()
 }
 
+// Specify which routes should be protected
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-  ],
-};
+    '/dashboard/:path*',
+  ]
+}

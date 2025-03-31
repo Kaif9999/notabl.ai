@@ -18,7 +18,7 @@ interface NoteDetailProps {
 const NoteDetail = ({ noteId: propNoteId, onOpenSettings, onOpenUpgrade }: NoteDetailProps) => {
   const params = useParams();
   const router = useRouter();
-  const paramNoteId = typeof params.noteId === 'string' ? params.noteId : undefined;
+  const paramNoteId = params?.noteId && typeof params.noteId === 'string' ? params.noteId : undefined;
   const noteId = propNoteId || paramNoteId;
   
   const { notes, deleteNote, updateNote } = useNoteContext();

@@ -28,14 +28,12 @@ export type Folder = {
     progressTime?: string;
   };
   
-  export type UserPlan = "free" | "premium";
-  
   export type UserProfile = {
     id: string;
     name: string;
     email: string;
     avatar?: string;
-    plan: UserPlan;
+    plan: "free" | "premium";
     notesUsed: number;
     notesLimit: number;
   };
