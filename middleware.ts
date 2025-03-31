@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
+import NextAuth from "next-auth"
+import authConfig from "./auth.config"
+
+
 
 export async function middleware(request: NextRequest) {
   // Skip auth check for auth-related routes
@@ -33,5 +37,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/dashboard/:path*',
+    '/protected/:path*',
   ]
 }
