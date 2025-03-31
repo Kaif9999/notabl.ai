@@ -17,6 +17,16 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
+  
+  // Add relations to content types
+  transcripts   Transcript[]
+  notes         Note[]
+  // Future content types
+  quizzes       Quiz[]
+  recipes       Recipe[]
+  travelPlans   TravelPlan[]
+  workouts      Workout[]
+  chats         Chat[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -76,4 +86,117 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@id([userId, credentialID])
+}
+
+// Content models
+model Transcript {
+  id          String   @id @default(cuid())
+  title       String
+  content     String   @db.Text
+  sourceUrl   String?
+  sourceName  String?  @default("YouTube")
+  thumbnail   String?
+  duration    Int?     // Duration in seconds
+  
+  // Metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model Note {
+  id          String   @id @default(cuid())
+  title       String
+  content     String   @db.Text
+  folderId    String?
+  
+  // Metadata
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([folderId])
+}
+
+// Future models (minimal structure for now)
+model Quiz {
+  id          String   @id @default(cuid())
+  title       String
+  questions   String   @db.Text
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model Recipe {
+  id          String   @id @default(cuid())
+  title       String
+  ingredients String   @db.Text
+  instructions String  @db.Text
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model TravelPlan {
+  id          String   @id @default(cuid())
+  title       String
+  destination String
+  itinerary   String   @db.Text
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model Workout {
+  id          String   @id @default(cuid())
+  title       String
+  exercises   String   @db.Text
+  duration    Int?     // Duration in minutes
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model Chat {
+  id          String   @id @default(cuid())
+  title       String
+  messages    String   @db.Text
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
 }
