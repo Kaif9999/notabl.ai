@@ -34,7 +34,13 @@ interface MainContentProps {
   folderId?: string;
 }
 
-type ProcessingStatus = "idle" | "uploading" | "transcribing" | "generating" | "completed" | "error";
+type ProcessingStatus =
+  | "idle"
+  | "uploading"
+  | "transcribing"
+  | "generating"
+  | "completed"
+  | "error";
 
 export function MainContent({
   title,
@@ -52,7 +58,8 @@ export function MainContent({
   const [isProcessingNote, setIsProcessingNote] = useState(false);
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [showProcessingModal, setShowProcessingModal] = useState(false);
-  const [processingStatus, setProcessingStatus] = useState<ProcessingStatus>("idle");
+  const [processingStatus, setProcessingStatus] =
+    useState<ProcessingStatus>("idle");
   const [processingNoteId, setProcessingNoteId] = useState<string | null>(null);
 
   const currentFolderId =
@@ -153,10 +160,10 @@ export function MainContent({
 
     try {
       // Call our API route to get the transcript
-      const response = await fetch('/api/transcript', {
-        method: 'POST',
+      const response = await fetch("/api/transcript", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ url: youtubeUrl }),
       });
@@ -164,7 +171,7 @@ export function MainContent({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to fetch transcript');
+        throw new Error(data.error || "Failed to fetch transcript");
       }
 
       // Create a new note with the video details
@@ -174,17 +181,17 @@ export function MainContent({
         currentFolderId,
         "youtube"
       );
-      
+
       setProcessingNoteId(newNote.id);
       addNote(newNote);
 
       // Update processing status
       setProcessingStatus("transcribing");
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       setProcessingStatus("generating");
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // Update the note with the transcript
       const updatedNote = {
         ...newNote,
@@ -198,20 +205,23 @@ export function MainContent({
 ${data.transcript}
         `.trim(),
       };
-      
+
       // Update the note in your context/state management
       addNote(updatedNote);
-      
+
       setProcessingStatus("completed");
       toast.success("Successfully imported YouTube video");
 
       // Clear the input
       setYoutubeUrl("");
-      
     } catch (error) {
-      console.error('Error processing YouTube video:', error);
+      console.error("Error processing YouTube video:", error);
       setProcessingStatus("error");
-      toast.error(error instanceof Error ? error.message : "Failed to process YouTube video");
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Failed to process YouTube video"
+      );
       setShowProcessingModal(false);
     }
   };
@@ -306,7 +316,7 @@ ${data.transcript}
                   value={youtubeUrl}
                   onChange={(e) => setYoutubeUrl(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === "Enter") {
                       handleYoutubeImport();
                     }
                   }}
