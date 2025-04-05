@@ -1,11 +1,11 @@
 import DebugSession from "@/components/DebugSession";
-import LandingPage from "@/components/LandingPage";
+import NotablLandingPage from "@/components/NotablLandingPage";
 import { SessionProvider } from "next-auth/react";
 export default function Home() {
   return (
     <SessionProvider>
-      <DebugSession />
-      <LandingPage />
+      {/* <DebugSession /> */}
+      <NotablLandingPage />
     </SessionProvider>
   );
 }
