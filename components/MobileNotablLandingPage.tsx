@@ -217,15 +217,9 @@ const MobileNotablLandingPage = () => {
         <h2 className="text-center text-neutral-800 text-3xl font-semibold font-['Plus_Jakarta_Sans'] mb-6">Why Notabl?</h2>
         <div className="flex flex-col gap-4">
           {/* Save Hours Card */}
-          <div className="h-96 px-6 pb-6 bg-stone-50 rounded-3xl shadow-lg flex flex-col justify-between">
-            <div className="relative h-72 flex items-center justify-center">
-              <Image src="/save-hours.svg" alt="Save Hours" width={170} height={170} />
-              <div className="absolute top-[100px] right-[60px] size-14 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-6 h-5 bg-orange-400" />
-              </div>
-              <div className="absolute top-[80px] left-[45px] size-14 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="size-5 bg-orange-400" />
-              </div>
+          <div className="h-84 px-4 pt-6 pb-2 bg-stone-50 rounded-3xl shadow-lg flex flex-col justify-between">
+            <div className="relative h-50 flex items-center justify-center">
+              <Image src="/save-hours.svg" alt="Save Hours" layout="fill" objectFit="contain" />
             </div>
             <div>
               <h3 className="text-neutral-800 text-xl font-semibold mb-3">Save Hours</h3>
@@ -234,31 +228,19 @@ const MobileNotablLandingPage = () => {
           </div>
 
           {/* Personalized Learning Card */}
-          <div className="h-96 px-6 pt-8 pb-6 bg-stone-50 rounded-3xl shadow-lg">
-            <div className="relative h-72">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="size-56 rounded-full border border-amber-600/40" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="size-64 rounded-full border border-stone-300/60" />
-                </div>
-              </div>
-              {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, i) => (
-                <div key={i} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ transform: `rotate(${rotation}deg) translateY(-120px)` }}>
-                  <div className="size-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                    <div className="size-4 bg-indigo-600" />
-                  </div>
-                </div>
-              ))}
+          <div className="h-84 px-4 pt-6 pb-2 bg-stone-50 rounded-3xl shadow-lg flex flex-col justify-between">
+            <div className="relative h-50 flex items-center justify-center">
+              <Image src="/personalized_learning.svg" alt="Personalized Learning" layout="fill" objectFit="contain" />
             </div>
             <div>
-              <h3 className="text-neutral-800 text-xl font-semibold mb-3">Personalized Learning</h3>
+              <h3 className="text-neutral-800 text-xl font-semibold mb-2">Personalized Learning</h3>
               <p className="text-slate-600 text-base">Customize notes and learning formats to match your unique needs</p>
             </div>
           </div>
 
           {/* Deepen Understanding Card */}
-          <div className="h-96 px-6 pt-8 pb-6 bg-stone-50 rounded-3xl shadow-lg">
-            <div className="relative h-72">
+          <div className="h-84 px-4 pt-6 pb-2 bg-stone-50 rounded-3xl shadow-lg flex flex-col justify-between">
+            <div className="relative h-50 flex items-center justify-center">
               <Image src="/deepen-understanding.svg" alt="Deepen Understanding" layout="fill" objectFit="contain" />
             </div>
             <div>
