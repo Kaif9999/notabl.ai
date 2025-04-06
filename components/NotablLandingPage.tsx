@@ -126,7 +126,7 @@ const NotablLandingPage = () => {
         </header>
 
         {/* Hero Section */}
-        <section className="max-w-6xl mx-auto my-8">
+        <section className="max-w-6xl mx-auto my-16 pb-6 pl-6 pr-6">
           <div className="border-dashed border-gray-300">
             {/* Intersection points for hero section */}
             <div className="absolute left-0">{/* <IntersectionPoint /> */}</div>
@@ -382,16 +382,16 @@ const NotablLandingPage = () => {
             <div className="grid grid-cols-3 gap-4">
               {/* Save Hours Card */}
               <div className="bg-[#FCFAF8] pt-20 p-6 rounded-3xl shadow-md">
-                <div className="h-48 flex items-center justify-center mb-2">
+                <div className="h-40 flex items-center justify-center mb-2">
                   <div className="w-60 h-60 rounded-full flex items-center justify-center">
                     <img
                       src="/save-hours.svg"
-                      className="w-full h-full pb-5"
+                      className="w-full h-full"
                       alt="Clock Icon"
                     />
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-neutral-900 mb-3">
+                <h3 className="text-2xl pt-20 font-semibold text-neutral-900 mb-3">
                   Save Hours
                 </h3>
                 <p className="text-sm text-neutral-500">
@@ -400,13 +400,13 @@ const NotablLandingPage = () => {
               </div>
 
               {/* Personalized Learning Card */}
-              <div className="bg-[#FCFAF8] p-6 rounded-3xl shadow-md">
-                <div className="h-48 flex items-center justify-center mb-6">
-                  <div className="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center">
-                    <img src="/api/placeholder/60/60" alt="Learning Icon" />
+              <div className="bg-[#FCFAF8] pt-20 p-6 rounded-3xl shadow-md">
+                <div className="h-40 flex items-center justify-center mb-6">
+                  <div className="w-60 h-60 rounded-full flex items-center justify-center">
+                    <img src="/personalized_learning.svg" alt="Learning Icon" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-neutral-900 mb-3">
+                <h3 className="text-2xl pt-20 font-semibold text-neutral-900 mb-3">
                   Personalized Learning
                 </h3>
                 <p className="text-base text-neutral-500">
@@ -416,16 +416,16 @@ const NotablLandingPage = () => {
               </div>
 
               {/* Deepen Your Understanding Card */}
-              <div className="bg-[#FCFAF8] p-6 rounded-3xl shadow-md">
-                <div className="h-48 flex items-center justify-center mb-6">
-                  <div className="w-32 h-32 bg-green-100 rounded-full flex items-center justify-center">
+              <div className="bg-[#FCFAF8] pt-20 p-6 rounded-3xl shadow-md">
+                <div className="h-40 flex items-center justify-center mb-6">
+                  <div className="w-60 h-60 rounded-full flex items-center justify-center">
                     <img
-                      src="/api/placeholder/60/60"
+                      src="/deepen-understanding.svg"
                       alt="Understanding Icon"
                     />
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-neutral-900 mb-3">
+                <h3 className="text-2xl pt-10 font-semibold text-neutral-900 mb-3">
                   Deepen Your Understanding
                 </h3>
                 <p className="text-base text-neutral-500">
@@ -452,38 +452,38 @@ const NotablLandingPage = () => {
                 with youtube content
               </p>
 
-              <div className="w-full max-w-2xl mx-auto space-y-8">
+              <div className="w-[80%] max-w-xl mx-auto space-y-8">
                 <div className="bg-neutral-50 border border-neutral-400 rounded-2xl p-4 flex items-center">
                   <input
                     type="text"
                     placeholder="Paste YouTube URL here"
-                    className="w-full bg-transparent text-neutral-500 focus:outline-none"
+                    className="w-[80%] bg-transparent text-neutral-500 focus:outline-none"
                   />
                 </div>
 
-                <div className="grid grid-cols-4 gap-2 justify-center">
-                  <button className="bg-orange-50 border border-orange-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                <div className="w-full grid grid-cols-4 gap-2 justify-center">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Notes
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Recipes
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Workouts
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Travel
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Quiz
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Flashcards
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Chat
                   </button>
-                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold">
+                  <button className="bg-neutral-100 border border-neutral-200 rounded-xl px-4 py-2 text-sm font-semibold hover:border-orange-400 hover:bg-orange-50">
                     Transcript
                   </button>
                 </div>
